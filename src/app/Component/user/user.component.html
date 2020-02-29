@@ -1,1 +1,27 @@
-<p>user works!</p>
+<form>
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
+      <label>Amount: </label>
+      <input type="text" placeholder="Enter the amount" class="form-control"/>
+    </div>
+    <div class="col-md-4 mr-3 mb-3">
+    <label>Select Type</label>
+    <select class="form-control">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+    </select>
+    </div>
+  </div>
+  <div class="form-row">
+
+    <textarea class="form-control col-md-6" rows="5" name="descreption">Descreption</textarea>
+  </div>
+  <div class="form-row">
+<input type="file" (change)="onFileChanged($event)" style="display: none" #fileinput>
+    <button class="btn btn-primary" (click) = "fileinput.click()">Select File</button>
+
+  </div>
+
+</form>
