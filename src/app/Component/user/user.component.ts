@@ -11,5 +11,8 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  onFileChanged(event){
+    const file = event.target.file[0];
+  }
 
 }
