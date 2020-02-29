@@ -8,6 +8,7 @@ import { UserComponent } from './Component/user/user.component';
 import { ManagerComponent } from './Component/manager/manager.component';
 import {FormsModule} from '@angular/forms';
 import { ReimbursementViewComponent } from './Component/reimbursement-view/reimbursement-view.component';
+import { HeaderComponent } from './Component/header/header.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ReimbursementViewComponent } from './Component/reimbursement-view/reimb
     LoginComponent,
     UserComponent,
     ManagerComponent,
-    ReimbursementViewComponent
+    ReimbursementViewComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
