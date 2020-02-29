@@ -22,8 +22,10 @@
       <th scope="col">Amount</th>
       <th scope="col">Descreption</th>
       <th scope="col">Time submitted</th>
+      <th scope="col">Time Approved</th>
+      <th scope="col">Receipt</th>
       <th>Deny</th>
-      <th>Commit</th>
+      <th>Approve</th>
     </tr>
   </thead>
    <tbody>
@@ -31,9 +33,12 @@
        <th scope="row">1</th>
        <td>Mark</td>
        <td>Otto</td>
-       <td>@mdo</td>
-       <td><button *ngIf="reimbursement.statusId == 2" disabled="true">Deny</button> </td>
-       <td><button>Approved</button></td>
+       <td>(Time)/td>
+       <td>(Time)</td>
+       <td><button>Receipt</button></td><!--TODO ADD FUNCTION FOR GETTING S3 BUCKET IMAGE FROM URL RETURNED BY DB-->      
+        <td><button *ngIf="reimbursement.statusId == 1">Approved</button></td> 
+        <td><button *ngIf="reimbursement.statusId == 1">Deny</button> </td>
+
      </tr>
    </tbody>
    </table>
