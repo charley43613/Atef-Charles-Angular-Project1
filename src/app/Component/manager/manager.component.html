@@ -32,7 +32,7 @@
        <td>Mark</td>
        <td>Otto</td>
        <td>@mdo</td>
-       <td><button>Deny</button> </td>
+       <td><button *ngIf="reimbursement.statusId == 2" disabled="true">Deny</button> </td>
        <td><button>Approved</button></td>
      </tr>
    </tbody>
