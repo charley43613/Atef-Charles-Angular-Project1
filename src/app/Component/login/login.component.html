@@ -30,9 +30,15 @@
             </div>
             
             <div class="form-group">
-              <input type="submit" value="Login" class="btn float-right login_btn" *ngIf = "user.roleId == 1" routerLink="/manager"><!--Updates our user
+              <input (click)="loginClicked()" type="submit" value="Login" class="btn float-right login_btn" routerLink="/{{output}}" ><!--Updates our user-->
+        
+                <!-- <ng-template #second>
+                    <ng-container *ngIf="user.roleId == 2;else third" routerLink="/user"></ng-container>
+                </ng-template> -->
+                
+<!-- 
               <div *ngIf = "user.roleId == 1" routerLink="/manager"></div>
-              <div *ngIf = "user.roleId == 2" routerLink="/user"></div>
+              <div *ngIf = "user.roleId == 2" routerLink="/user"></div> -->
      
             </div>
           </form>
