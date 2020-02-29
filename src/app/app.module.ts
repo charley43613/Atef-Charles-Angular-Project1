@@ -9,6 +9,7 @@ import { ManagerComponent } from './Component/manager/manager.component';
 import {FormsModule} from '@angular/forms';
 import { ReimbursementViewComponent } from './Component/reimbursement-view/reimbursement-view.component';
 import { HeaderComponent } from './Component/header/header.component';
+import { ContentComponent } from './Component/content/content.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { HeaderComponent } from './Component/header/header.component';
     UserComponent,
     ManagerComponent,
     ReimbursementViewComponent,
-    HeaderComponent
+    HeaderComponent,
+    ContentComponent
   ],
   imports: [
     BrowserModule,
