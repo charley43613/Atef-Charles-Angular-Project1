@@ -10,6 +10,8 @@ import {FormsModule} from '@angular/forms';
 import { ReimbursementViewComponent } from './Component/reimbursement-view/reimbursement-view.component';
 import { HeaderComponent } from './Component/header/header.component';
 import { ContentComponent } from './Component/content/content.component';
+import { LoginServiceService } from './Services/login-service.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -25,9 +27,10 @@ import { ContentComponent } from './Component/content/content.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [LoginServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
