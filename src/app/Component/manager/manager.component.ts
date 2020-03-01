@@ -14,7 +14,7 @@ export class ManagerComponent implements OnInit {
 
   public reimbursement: Reimbursement = new Reimbursement();
   constructor(private loginService:LoginServiceService) { 
-    console.log("User role Id tracked in manager component:" + this.loginService.userData.userRoleId);
+    console.log("User role Id tracked in manager component:" + this.loginService.getCurrentUser().firstName);
   }
 
 

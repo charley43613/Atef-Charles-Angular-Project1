@@ -1,6 +1,7 @@
 import { UserData, LoginServiceService } from './../../Services/login-service.service';
 import { User } from './user';
 import { Component, OnInit, NgModule } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 
@@ -27,7 +28,7 @@ export class LoginComponent implements OnInit {
    public route: String;
    username = '';
    password ='';
-
+  
 
    
    
@@ -36,38 +37,37 @@ export class LoginComponent implements OnInit {
 
 
   log(val) { console.log(val); }
-    constructor(private loginService: LoginServiceService) { }
+    constructor(private loginService: LoginServiceService, private router: Router) { }
 
   ngOnInit(): void {
 
   }
-  async login() {
-    const result: UserData = await this.loginService.getUser(this.username, this.password);
+  login() {
+    this.loginService.getUser(this.username, this.password)
+    .subscribe(
+      data => {
 
-    this.userData.userID = result.userID;
-    this.userData.userName = result.userName;
-    this.userData.firstName = result.firstName;
-    this.userData.lastName = result.lastName;
-    this.userData.email = result.email;
-    this.userData.userRoleId = result.userRoleId;
+        this.loginService.setLoginServiceUser(data);
+        if (this.loginService.getCurrentUser().userRoleId == 1){
+          this.router.navigateByUrl("/manager");
+        }
+        else if(this.loginService.getCurrentUser().userRoleId == 2){
+          this.router.navigateByUrl("/user");
+        }
+        else{
+          this.router.navigateByUrl("");//go back to login
+        }
+    
+      }             // this.location.replaceState('/home');
+        
+      )
+    }
     // Clear current input value
 
-    this.route = this.loginClicked(this.userData.userRoleId);
 
-    console.log("The user's data tracked by the login component is: email:" + this.userData.email);
-    console.log(" RoleId:" + this.userData.userRoleId + "ETC...");
+
 
   }
-  private loginClicked(roleId: number): string{
-    console.log("user role id is: ");
-    console.log(this.userData.userRoleId);
-    if (this.userData.userRoleId == 1) {
-      return 'manager';
-    } else if(this.userData.userRoleId == 2) {
-      return 'user';
-    } else{
-      return '';
-    }
-  }
 
-}
+
+

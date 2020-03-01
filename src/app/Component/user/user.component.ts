@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginServiceService } from 'src/app/Services/login-service.service';
 
 @Component({
   selector: 'app-user',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  constructor(private loginService: LoginServiceService) {
+    console.log("User role Id tracked in employee component:" + this.loginService.getCurrentUser().firstName);
+   }
 
   ngOnInit(): void {
   }

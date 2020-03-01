@@ -16,7 +16,11 @@ export interface UserData{
 })
 export class LoginServiceService {
 
-  public userData:UserData = {
+
+
+  constructor(private httpClient: HttpClient) { }
+
+  public userData: UserData = {
     userID: 0,
     userName: "",
     firstName: "",
@@ -26,10 +30,21 @@ export class LoginServiceService {
 
   }
 
-  constructor(private httpClient: HttpClient) { }
+  getCurrentUser() {
+    return this.userData;
+  }
+  // tslint:disable-next-line: align
+  setLoginServiceUser(user: any) {
+    this.userData.userID = user.UserID;
+    this.userData.userName = user.userName;
+    this.userData.firstName = user.firstName;
+    this.userData.lastName = user.lastName;
+    this.userData.email = user.email;
+    this.userData.userRoleId = user.userRoleId;
+ }
 
 
-  getUser(passedusername:string, passedpassword:string): Promise<UserData> {
+  getUser(passedusername:string, passedpassword:string) {
     const body: LoginBody = {
       username: passedusername,
       password: passedpassword
@@ -39,7 +54,7 @@ export class LoginServiceService {
     
     const url = `http://localhost:8080/ERS/LogInServlet`;
 
-    return this.httpClient.post<UserData>(url, body).toPromise();
+    return this.httpClient.post(url, body);
   }
 
 
