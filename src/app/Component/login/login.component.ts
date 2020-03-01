@@ -1,3 +1,4 @@
+import { userData, LoginServiceService } from './../../Services/login-service.service';
 import { User } from './user';
 import { Component, OnInit, NgModule } from '@angular/core';
 
@@ -13,7 +14,8 @@ import { Component, OnInit, NgModule } from '@angular/core';
 export class LoginComponent implements OnInit {
   
    public output: String;
-
+   username = '';
+   password='';
    
    
 
@@ -24,22 +26,32 @@ export class LoginComponent implements OnInit {
     constructor() { }
 
   ngOnInit(): void {
-  
 
+  }
+  async login(username,password) {
+    const result: UserData = await this.LoginServiceService.
+      .getPokemon(this.pokeInput);
+
+    this.pokeData.name = result.name;
+    this.pokeData.imgSrc = result.sprites.front_default;
+    this.pokeData.id = result.id;
+
+    // Clear current input value
+    this.pokeInput = '';
 
 
   }
-  loginClicked() {
+  // loginClicked() {
     
-    console.log("user id is: ");
-    console.log(this.user.roleId);
-    if (this.user.roleId == 1) {
-      this.output= "manager";
-    } else if(this.user.roleId == 2) {
-      this.output = "user";
-    } else{
-      this.output =  "";
-    }
-  }
+  //   console.log("user id is: ");
+  //   console.log(this.user.roleId);
+  //   if (this.user.roleId == 1) {
+  //     this.output= "manager";
+  //   } else if(this.user.roleId == 2) {
+  //     this.output = "user";
+  //   } else{
+  //     this.output =  "";
+  //   }
+  // }
 
 }
