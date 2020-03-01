@@ -9,12 +9,22 @@ export interface UserData{
   firstName: string;
   lastName: string;
   email: string;
-  userRoleId: string;
+  userRoleId: number;
 }
 @Injectable({
   providedIn: 'root'
 })
 export class LoginServiceService {
+
+  public userData:UserData = {
+    userID: 0,
+    userName: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    userRoleId: 0,
+
+  }
 
   constructor(private httpClient: HttpClient) { }
 
@@ -25,10 +35,12 @@ export class LoginServiceService {
       password: passedpassword
 
     } as LoginBody;
-    console.log("content of body(LoginBody interface instance) is: " + body.username +"  " + body.password);
+
     
     const url = `http://localhost:8080/ERS/LogInServlet`;
 
     return this.httpClient.post<UserData>(url, body).toPromise();
   }
+
+
 }

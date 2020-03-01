@@ -27,11 +27,13 @@ export class LoginComponent implements OnInit {
    public route: String;
    username = '';
    password ='';
+
+
    
    
 
-  public user: User = new User();
-  public role = this.user.roleId;
+
+
 
   log(val) { console.log(val); }
     constructor(private loginService: LoginServiceService) { }
@@ -39,8 +41,8 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  async login(username,password) {
-    const result: UserData = await this.loginService.getUser(username, password);
+  async login() {
+    const result: UserData = await this.loginService.getUser(this.username, this.password);
 
     this.userData.userID = result.userID;
     this.userData.userName = result.userName;
@@ -52,14 +54,16 @@ export class LoginComponent implements OnInit {
 
     this.route = this.loginClicked(this.userData.userRoleId);
 
+    console.log("The user's data tracked by the login component is: email:" + this.userData.email);
+    console.log(" RoleId:" + this.userData.userRoleId + "ETC...");
 
   }
   private loginClicked(roleId: number): string{
-    console.log("user id is: ");
-    console.log(this.user.roleId);
-    if (this.user.roleId == 1) {
+    console.log("user role id is: ");
+    console.log(this.userData.userRoleId);
+    if (this.userData.userRoleId == 1) {
       return 'manager';
-    } else if(this.user.roleId == 2) {
+    } else if(this.userData.userRoleId == 2) {
       return 'user';
     } else{
       return '';

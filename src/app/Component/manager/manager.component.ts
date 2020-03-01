@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Reimbursement } from './reimbursement';
+import { LoginServiceService, UserData } from 'src/app/Services/login-service.service';
 
 @Component({
   selector: 'app-manager',
@@ -8,8 +9,16 @@ import { Reimbursement } from './reimbursement';
 })
 export class ManagerComponent implements OnInit {
 
+
+
+
   public reimbursement: Reimbursement = new Reimbursement();
-  constructor() { }
+  constructor(private loginService:LoginServiceService) { 
+    console.log("User role Id tracked in manager component:" + this.loginService.userData.userRoleId);
+  }
+
+
+
 
   ngOnInit(): void {
   }
