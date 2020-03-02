@@ -1,20 +1,31 @@
 <app-header></app-header>
 
 <div class="container">
-    <form >
-        <div class="form-row">
+
+ 
             <div class="col-md-3 mb-3">
                 <label>Response</label>
-                <select class="form-control">
-                    <option>Pending</option>
-                    <option>Approved</option>
-                    <option>Deny</option>
+
+                <select [(ngModel)]="selectedValue">
+                  <option value={{pending}}>PENDING</option>
+                  <option value={{approved}}>APPROVED</option>
+                  <option value={{rejected}}>REJECTED</option>
                 </select>
+                <!-- <select class="form-control">
+                    <option [(ngModel)]="statusType">Pending</option>
+                    <option >Approved</option>
+                    <option >Deny</option>
+                </select> -->
+                
+                  
+
+                
 
             </div>
-        </div>
-        
-    </form>
+            <div>
+            <p>Status type is: {{selectedValue}} </p></div>
+    
+
 </div>
 
 <table  class="table">

@@ -1,6 +1,6 @@
-import { User } from './../Component/login/user';
+
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {LoginBody} from '../loginBody';
 
 export interface UserData{
@@ -51,7 +51,7 @@ export class LoginServiceService {
 
     } as LoginBody;
 
-    
+
     const url = `http://localhost:8080/ERS/LogInServlet`;
 
     return this.httpClient.post(url, body);
